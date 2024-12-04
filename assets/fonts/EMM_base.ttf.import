@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/EMM_base.ttf-8bbe53819add216dec6921139727c6af
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

@@ -18,6 +18,7 @@ public partial class MoveableArt : MoveableArtBase
 	[Export] public bool canResetRotation;
 	[Export] public bool canSetValue;
 	[Export] public bool canBeTrashed;
+	[Export] public RichTextLabel richText;
 
 	// Signals
 	[Signal] public delegate void PositionChangedEventHandler(Vector2 pos);
@@ -54,10 +55,10 @@ public partial class MoveableArt : MoveableArtBase
 		area2D.ChangeOwner(this);
 		collisionShape2D = new CollisionShape2D();
 		collisionShape2D.ChangeOwner(area2D);
-        rectangleShape2D = new RectangleShape2D {
-            Size = Size
-        };
-        collisionShape2D.Shape = rectangleShape2D;
+		rectangleShape2D = new RectangleShape2D {
+			Size = Size
+		};
+		collisionShape2D.Shape = rectangleShape2D;
 		area2D.Position = Size/2;
 		area2D.InputEvent += OnAreaInputEvent;
 		area2D.MouseEntered += OnAreaMouseEntered;
@@ -74,7 +75,28 @@ public partial class MoveableArt : MoveableArtBase
 		if (Texture != null) {
 			PostSetTexture();
 		}
+
+		if (richText == null) {
+			richText = GetNode<RichTextLabel>("RichText");
+		}
+
+		UpdateRichTextLabel();
 	}
+
+	private void UpdateRichTextLabel() {
+        if (richText != null) {
+            richText.Text = value;
+        }
+    }
+
+	public void ChangeValue(string newValue) {
+    if (value != newValue) {
+        value = newValue;
+        UpdateRichTextLabel();
+    }
+}
+
+	
 
 	void OnAreaInputEvent(Node viewport, InputEvent @event, long shapeIdx) {
 		// Left click
@@ -91,7 +113,7 @@ public partial class MoveableArt : MoveableArtBase
 		}
 	}
 
-    void OnInputGrabbed(InputEvent @event) {	
+	void OnInputGrabbed(InputEvent @event) {	
 		// Left click
 		if (@event is InputEventMouseButton mouseButtonEvent && mouseButtonEvent.ButtonIndex == MouseButton.Left) {
 			mouseIsDown = mouseButtonEvent.Pressed;
@@ -107,7 +129,7 @@ public partial class MoveableArt : MoveableArtBase
 				SetPosition(mouseMotionEvent.Position - movementOffset);
 			}
 		}
-    }
+	}
 
 	void OnAreaMouseEntered() {
 		mouseIsInArea = true;
@@ -291,7 +313,7 @@ public partial class MoveableArt : MoveableArtBase
 
 		if (canSetValue) {
 			var val = (string) data["Value"];
-			value = val;
+			ChangeValue(val);
 		}
 	}
 }

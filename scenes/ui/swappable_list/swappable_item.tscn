@@ -15,9 +15,9 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0ovd"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mq280"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bt5bl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mq280"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhnhu"]
 bg_color = Color(0.160784, 0.160784, 0.160784, 1)
@@ -35,9 +35,9 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xeugw"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dpoy0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xeugw"]
 
 [node name="SwappableItem" type="Control" node_paths=PackedStringArray("button", "trashButton", "settingsButton", "content", "paddingSpinBox")]
 custom_minimum_size = Vector2(0, 32)
@@ -61,10 +61,10 @@ anchor_right = 0.999333
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = ExtResource("2_leodm")
+theme_override_styles/focus = SubResource("StyleBoxFlat_s0ovd")
 theme_override_styles/hover = ExtResource("3_fehit")
 theme_override_styles/pressed = ExtResource("2_leodm")
-theme_override_styles/focus = SubResource("StyleBoxFlat_s0ovd")
+theme_override_styles/normal = ExtResource("2_leodm")
 icon = ExtResource("2_j7yu3")
 metadata/_edit_use_anchors_ = true
 
@@ -73,10 +73,10 @@ layout_mode = 2
 anchor_left = 0.79661
 anchor_right = 0.932203
 anchor_bottom = 1.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_mq280")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bt5bl")
 theme_override_styles/hover = ExtResource("5_l243f")
 theme_override_styles/pressed = ExtResource("5_l243f")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bt5bl")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mq280")
 icon_alignment = 2
 script = ExtResource("4_evnf4")
 popupMenu = NodePath("SettingsPanel")
@@ -163,10 +163,10 @@ layout_mode = 2
 anchor_left = 0.932203
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xeugw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dpoy0")
 theme_override_styles/hover = ExtResource("11_vnn02")
 theme_override_styles/pressed = ExtResource("11_vnn02")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_dpoy0")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xeugw")
 icon = ExtResource("4_th12k")
 icon_alignment = 1
 metadata/_edit_use_anchors_ = true

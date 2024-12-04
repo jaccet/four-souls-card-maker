@@ -3,18 +3,29 @@ using System;
 
 public partial class ValueProps : SelectionProp
 {
-	[Export] LineEdit lineEdit;
+    [Export] LineEdit lineEdit;
 
-	public override void _Ready() {
-		base._Ready();
-	}
+    public override void _Ready() {
+        base._Ready();
 
-	public override void HandleArtProperties(MoveableArt art) {
-		SetEnabled(art.canSetValue);
-		lineEdit.Text = art.canSetValue ? art.value : null;
-	}
+        // Ensure lineEdit is assigned
+        if (lineEdit == null)
+        {
+            GD.PrintErr("LineEdit is not assigned in the editor!");
+            return;
+        }
 
-	void OnTextChanged(string text) {
-		Card.instance.curSelectedArt.value = text;
-	}
+        lineEdit.TextChanged += OnTextChanged;
+    }
+
+    public override void HandleArtProperties(MoveableArt art) {
+        SetEnabled(art.canSetValue);
+        lineEdit.Text = art.canSetValue ? art.value : ""; // Use an empty string instead of null
+    }
+
+    private void OnTextChanged(string text) {
+        if (Card.instance?.curSelectedArt != null) { // Null check for Card.instance
+            Card.instance.curSelectedArt.ChangeValue(text);
+        }
+    }
 }

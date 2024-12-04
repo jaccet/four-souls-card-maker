@@ -157,16 +157,16 @@ public partial class DescEffect : DescBase
 	public void ResetRichTextSize() {
 		var oldCurFontSize = curFontSize;
 
-        curFontSize = (int) (baseFontSize * userScale * systemScale);
-        richText.AddThemeFontSizeOverride("normal_font_size", curFontSize);
+		curFontSize = (int) (baseFontSize * userScale * systemScale);
+		richText.AddThemeFontSizeOverride("normal_font_size", curFontSize);
 
 		var curLineSpacing = baseLineSpacing + lineSpacingDelta;
-        richText.AddThemeConstantOverride("line_separation", curLineSpacing);
+		richText.AddThemeConstantOverride("line_separation", curLineSpacing);
 
 		fontVar.SpacingGlyph = characterSpacing;
-        richText.AddThemeFontOverride("normal_font", fontVar);
+		richText.AddThemeFontOverride("normal_font", fontVar);
 
-        richText.Size = new Vector2(baseWidth * boundsMul, 0);
+		richText.Size = new Vector2(baseWidth * boundsMul, 0);
 
 		if (oldCurFontSize != curFontSize) {
 			SetText(unprocessedText);
@@ -174,12 +174,12 @@ public partial class DescEffect : DescBase
 
 		SaveManager.instance.OnNeedSaveAction();	
 
-        UpdateSize();
+		UpdateSize();
 	}
 
-    public override void Trash() {
+	public override void Trash() {
 		container.OnTextRemoved(this);
 		
-        base.Trash();
-    }
+		base.Trash();
+	}
 }
